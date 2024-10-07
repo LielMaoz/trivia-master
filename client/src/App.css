@@ -1,0 +1,90 @@
+
+
+#background-div {
+  height: 100vh; /* Full height of the viewport */
+  background-image: url('./images/background3.png'); /* Path to your image */
+  background-size: cover; /* Cover the entire screen */
+  background-position: center; /* Center the image */
+  color: rgb(54, 14, 14); /* Text color on top of the background */
+  display: flex; /* Use flexbox to center content */
+  flex-direction: column;
+  justify-content: center; /* Align items to the top */
+  /*align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+  padding-top: 20px; /* Optional: Add some padding at the top */
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  /*font-weight:bold;*/
+}
+
+.content-container{
+  background-color: rgba(172, 231, 255, 0.85); /* White background with some transparency */
+  padding: 40px; /* Space inside the rectangle */
+  border-radius: 15px; /* Optional: Rounded corners */
+  margin-bottom: 20px; /* Space below the rectangle */
+  width: 100%; /* Make the width responsive */
+  max-width: 600px; /* Set a max width */
+  margin: 20px auto; /* Center the rectangle horizontally */
+  text-align: center;
+}
+.question-component {
+  margin-top: 60px; /* Space between the header and Question component */
+  /* You can add more styles here if needed */
+}
+
+
+button {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
