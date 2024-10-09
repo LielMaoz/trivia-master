@@ -1,4 +1,4 @@
-const questionBank = [
+const questionsBank = [
     {
       id: 1,
       question: "What is the capital of France?",
@@ -12,11 +12,18 @@ const questionBank = [
       correctAnswer: "Mars"
     },
     {
-      id: 3,
+      id:3,
+      question: "What is the capital of Germany?",
+      options: ["London", "Berlin", "Paris", "Rome"],
+      correctAnswer: "Berlin"
+      
+    },
+    {
+      id: 4,
       question: "Who wrote 'To Kill a Mockingbird'?",
       options: ["Harper Lee", "J.K. Rowling", "George Orwell", "Mark Twain"],
       correctAnswer: "Harper Lee"
     }
   ];
   
-  export default questionBank;
+  export default questionsBank;

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import questionsBank from './QuestionBank';   //!!!!!!
+
+let nextQVis = false; 
 
 const Question = () => {
     const [score, setScore] = useState(0);
@@ -6,24 +9,13 @@ const Question = () => {
     const [questions, setQuestions] = useState([]);
     const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
 
-    const questionDatabase = [
-        {
-            question: "What is the capital of France?",
-            correctAnswer: "Paris",
-            answers: ["London", "Berlin", "Paris", "Rome"],
-        },
-        {
-            question: "What is the capital of Germany?",
-            correctAnswer: "Berlin",
-            answers: ["London", "Berlin", "Paris", "Rome"],
-        },
-    ];
 
     useEffect(() => {
-        setQuestions(questionDatabase);
+        setQuestions(questionsBank);
     }, []);
 
     const handleAnswerClick = (selectedAnswer) => {
+        nextQVis = true;
         const correctAnswer = questions[currentQuestionIndex].correctAnswer;
         if (selectedAnswer === correctAnswer) {
             setScore(score + 1);
@@ -34,6 +26,7 @@ const Question = () => {
     };
 
     const nextQuestion = () => {
+        nextQVis = false;
         setIsAnswerCorrect(null);
         setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
     };
@@ -47,7 +40,7 @@ const Question = () => {
             <h2>Question {currentQuestionIndex + 1}:</h2>
             <h3>{questions[currentQuestionIndex].question}</h3>
             <div>
-                {questions[currentQuestionIndex].answers.map((answer, index) => (
+                {questions[currentQuestionIndex].options.map((answer, index) => (
                     <button key={index} onClick={() => handleAnswerClick(answer)}>
                         {answer}
                     </button>
@@ -56,7 +49,8 @@ const Question = () => {
             {isAnswerCorrect === true && <p>Correct! 🎉</p>}
             {isAnswerCorrect === false && <p>Wrong! 😢</p>}
             <h3>Score: {score}</h3>
-            <button onClick={nextQuestion}>Next Question</button>
+            {nextQVis === true && <button onClick={nextQuestion}>Next Question</button>}
+            
         </div>
     );
 };
