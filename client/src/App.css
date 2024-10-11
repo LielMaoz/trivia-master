@@ -1,41 +1,41 @@
-
-
 #background-div {
   height: 100vh; /* Full height of the viewport */
-  background-image: url('./images/background3.png'); /* Path to your image */
-  background-size: cover; /* Cover the entire screen */
-  background-position: center; /* Center the image */
-  color: rgb(54, 14, 14); /* Text color on top of the background */
+  background-image: url('/public/images/background3.png'); /* Path to your image */
+  object-fit: fill;
+  color: rgb(11, 35, 71); /* Text color on top of the background */
   display: flex; /* Use flexbox to center content */
   flex-direction: column;
   justify-content: center; /* Align items to the top */
-  /*align-items: center; /* Center items horizontally */
+  align-items: center; /* Center items horizontally
   text-align: center; /* Center text */
-  padding-top: 20px; /* Optional: Add some padding at the top */
+  /* padding-top: 20px; /* Optional: Add some padding at the top */
   font-family:Verdana, Geneva, Tahoma, sans-serif;
+  /*padding: 20px;*/
+ /*min-width: 800;*/
   /*font-weight:bold;*/
 }
 
 .content-container{
-  background-color: rgba(172, 231, 255, 0.85); /* White background with some transparency */
-  padding: 40px; /* Space inside the rectangle */
-  border-radius: 15px; /* Optional: Rounded corners */
-  margin-bottom: 20px; /* Space below the rectangle */
-  width: 100%; /* Make the width responsive */
-  max-width: 600px; /* Set a max width */
-  margin: 20px auto; /* Center the rectangle horizontally */
+  background-color: rgba(172, 231, 255, 0.85);
+  padding: 2vmax;
+  border-radius: 2vmax;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: calc(38vmax + 2rem);
+  Height: calc(38.5vmax + 2rem);
+  min-height: fit-content;
   text-align: center;
 }
 .question-component {
-  margin-top: 60px; /* Space between the header and Question component */
-  /* You can add more styles here if needed */
+  margin-top: 40px; /* Space between the header and Question component */
+ 
 }
 
 
 button {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   color: white;
-  border: none;
+  border: 2px solid #0c2a33;
   padding: 10px 20px;
   cursor: pointer;
 }

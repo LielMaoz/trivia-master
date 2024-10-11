@@ -5,8 +5,8 @@ import './App.css';
 const App = () => {
     return (
       <div id="background-div">
-         <div className="content-container">
-            <h1>Trivia Master</h1>
+        <div className="content-container">
+            <img src="/images/triviaMasterHeader3.png"  width="87%" height="34%" alt="trivia master" />
             <div className="question-component">
                 <Question />
             </div>
