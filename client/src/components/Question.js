@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Timer from '../Timer';
+import Timer from './Timer';
 let nextQVis = false;
 const seconds = 30;
 
@@ -20,7 +20,7 @@ const Question = () => {
     const fetchQuestions = async () => {
       try {
         const response = await axios.get(
-          'https://opentdb.com/api.php?amount=3&category=9&type=multiple'
+          'https://opentdb.com/api.php?amount=100&category=9&type=multiple'
         );
 
         // **Process the questions to add shuffled answers**

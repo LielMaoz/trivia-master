@@ -1,19 +1,29 @@
 import React from 'react';
-import Question from './components/Questions/Question'; // Ensure you have TriviaGame in the same folder
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomeScreen from './components/HomeScreen';
+import Question from './components/Question';
+
 import './App.css';
 
 const App = () => {
-    return (
-      <div id="background-div">
-        <div className="content-container">
-            <img src="/images/triviaMasterHeader3.png"  width="87%" height="34%" alt="trivia master" />
-            <div className="question-component">
-                <Question />
-            </div>
-          </div>
-
+  return (
+    <BrowserRouter>
+      <div id='background-div'>
+        <div className='content-container'>
+          <img
+            src='/images/triviaMasterHeader3.png'
+            width='87%'
+            height='34%'
+            alt='trivia master'
+          />
+          <Routes>
+            <Route path='/' element={<HomeScreen />} />
+            <Route path='/questions' element={<Question />} />
+          </Routes>
         </div>
-    );
+      </div>
+    </BrowserRouter>
+  );
 };
 
 export default App;
