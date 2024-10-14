@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Timer from './Timer';
+import { useLocation } from 'react-router-dom';
+
 let nextQVis = false;
 const seconds = 30;
 
 const Question = () => {
   const [score, setScore] = useState(0);
-  const [strikes, setStirkes] = useState(3);
+  const [strikes, setStrikes] = useState(3);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(null);
@@ -16,11 +18,17 @@ const Question = () => {
   const [hasTimedOut, setHasTimedOut] = useState(false); // To prevent multiple timeouts
   const [timeRun, setTimeRun] = useState(true); // to prevent the time from running
 
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const numQuestions = searchParams.get('numQuestions');
+  const category = searchParams.get('category');
+  const difficulty = searchParams.get('difficulty');
+
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const response = await axios.get(
-          'https://opentdb.com/api.php?amount=100&category=9&type=multiple'
+          `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
         );
 
         // **Process the questions to add shuffled answers**
@@ -39,7 +47,7 @@ const Question = () => {
     };
 
     fetchQuestions();
-  }, []);
+  }, [numQuestions, category, difficulty]);
 
   // **Shuffle function to randomize answer order**
   const shuffleAnswers = (answers) => {
@@ -59,7 +67,7 @@ const Question = () => {
         setIsAnswerCorrect(true);
       } else {
         setIsAnswerCorrect(false);
-        setStirkes(strikes - 1);
+        setStrikes(strikes - 1);
       }
     }
   };
@@ -79,7 +87,7 @@ const Question = () => {
 
   const restartGame = () => {
     setScore(0);
-    setStirkes(3);
+    setStrikes(3);
     //setCurrentQuestionIndex(0);
     setIsAnswerCorrect(null);
     setTimeRun(true);
@@ -91,7 +99,7 @@ const Question = () => {
 
   const timeOut = () => {
     nextQVis = true;
-    setStirkes(strikes - 1);
+    setStrikes(strikes - 1);
     setIsAnswerCorrect(false);
   };
 

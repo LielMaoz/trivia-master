@@ -52,7 +52,6 @@ const HomeScreen = () => {
         />
       </label>
 
-      {/* Category Dropdown */}
       <label>
         <br></br>
         Category:
@@ -63,7 +62,6 @@ const HomeScreen = () => {
         />
       </label>
 
-      {/* Difficulty Dropdown */}
       <label>
         Difficulty:
         <Select
