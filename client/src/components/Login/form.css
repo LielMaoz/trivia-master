@@ -1,0 +1,19 @@
+.input-field {
+    height: 2vmax;
+    width: 20vmax;
+    text-align: left;
+}
+
+.center-align {
+    text-align: center;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.select-field {
+    height: 2vmax;
+    width: 20vmax;
+    text-align: center;
+}
