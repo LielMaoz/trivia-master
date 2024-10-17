@@ -21,7 +21,7 @@ const App = () => {
                         <Route path='/' element={<Login />} />
                         <Route path='/HomeScreen' element={<HomeScreen />} />
                         <Route
-                            path='/Question/Qeustion'
+                            path='/Question/Question'
                             element={<Question />}
                         />
                     </Routes>
