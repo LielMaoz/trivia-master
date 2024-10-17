@@ -32,7 +32,7 @@ const HomeScreen = () => {
     const handleCustomGame = () => {
         // Navigate to the question board with query parameters
         navigate(
-            `/Question/Qeustion?numQuestions=${numQuestions}&category=${category.value}&difficulty=${difficulty.value}`
+            `/Question/Question?numQuestions=${numQuestions}&category=${category.value}&difficulty=${difficulty.value}`
         );
     };
 
