@@ -152,7 +152,7 @@ const Question = () => {
                     <Link to='/HomeScreen'>Home screen</Link>
                 </div>
                 <img
-                    src='/images/finish.png'
+                    src='../images/finish.png'
                     width='80%'
                     height='30%'
                     alt='Finish'
@@ -170,7 +170,7 @@ const Question = () => {
                         <Link to='/HomeScreen'>Home screen</Link>
                     </div>
                     <img
-                        src='/images/gameOver1.png'
+                        src='../images/gameOver1.png'
                         width='70%'
                         height='25%'
                         alt='Game Over'
