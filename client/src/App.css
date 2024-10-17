@@ -15,25 +15,6 @@
     /*min-width: 800;*/
     /*font-weight:bold;*/
 }
-.info {
-    font-size: 1.3vmax;
-}
-
-.infoBar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5vmax;
-}
-
-.links-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    font-size: 1vmax;
-    gap: 2vmax;
-    padding-bottom: 2.5vmax;
-}
 
 .content-container {
     background-color: rgba(172, 231, 255, 0.85);
@@ -45,14 +26,6 @@
     height: calc(38.5vmax + 2rem);
     min-height: fit-content;
     text-align: center;
-}
-.question-component {
-    margin-top: 40px; /* Space between the header and Question component */
-}
-
-.left-align {
-    text-align: left;
-    margin-bottom: 60px;
 }
 
 button {

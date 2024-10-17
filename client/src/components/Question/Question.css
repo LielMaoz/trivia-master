@@ -1,0 +1,20 @@
+.info {
+    font-size: calc(1.1vmax + 0.2rem); /*1.3vmax;*/
+}
+
+.infoBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5vmax;
+    padding-top: 2.5vmax;
+}
+
+.links-bar {
+    background-color: rgb(165, 219, 245, 0.85);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    font-size: calc(0.9vmax + 0.1rem); /*1vmax;*/
+    gap: 2vmax;
+}

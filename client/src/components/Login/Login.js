@@ -27,31 +27,35 @@ const Login = () => {
     return (
         <div>
             <h1>Login Page</h1>
-            <br></br>
-            <br></br>
-            <form className='left-align' onSubmit={handleSubmit}>
-                <label>
-                    Enter your username:&nbsp;&nbsp;
-                    <input
-                        id='userName'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder='Enter username'
-                        className='input-field'
-                    />
-                </label>
+
+            <form className='form-align' onSubmit={handleSubmit}>
+                <div className='form-input'>
+                    <label>
+                        Enter your username:
+                        <input
+                            id='userName'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder='Enter username'
+                            className='input-field'
+                        />
+                    </label>
+                </div>
                 <br></br>
                 <br></br>
-                <label>
-                    Enter your password:&nbsp;&nbsp;
-                    <input
-                        id='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder='Enter password 🤫'
-                        className='input-field'
-                    />
-                </label>
+                <div className='form-input'>
+                    <label>
+                        Enter your password:
+                        <input
+                            id='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder='Enter password 🤫'
+                            className='input-field'
+                        />
+                    </label>
+                </div>
+
                 <br></br>
                 <br></br>
                 <div className='center-align'>
