@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 /*  count - number of seconds
     setCount - update the number of seconds
@@ -7,29 +7,47 @@ import { useEffect } from "react";
     setHasTimeOut - changes the timeout to true or false 
     timeRun - the user still thinking of the answer and there is still time to think
     setTimeRun - stop the timer, an answer was chosen   */
-const Timer = ({ count, setCount, onTimeOut, hasTimeOut, setHasTimedOut, timeRun, setTimeRun }) => {
-    
+
+const Timer = ({
+    count,
+    setCount,
+    onTimeOut,
+    hasTimeOut,
+    setHasTimedOut,
+    timeRun,
+    setTimeRun,
+}) => {
     useEffect(() => {
         if (timeRun) {
-            if (count > 0) { 
+            if (count > 0) {
                 const timer = setTimeout(() => {
                     setCount(count - 1); // Decrease the count by 1
-                }, 1000);  //every one second
-    
+                }, 1000); //every one second
+
                 // Cleanup function to clear the timeout if component is unmounted
                 return () => clearTimeout(timer);
-            }
-            else  // count == 0
-                if (!hasTimeOut) {  
+            } // count == 0
+            else if (!hasTimeOut) {
                 setHasTimedOut(true); // Ensure this block only runs once
                 setTimeRun(false);
                 onTimeOut(); // Call the passed-in onTimeOut function
             }
         }
-         
-  }, [count, setCount, onTimeOut, hasTimeOut, setHasTimedOut, timeRun, setTimeRun]);
+    }, [
+        count,
+        setCount,
+        onTimeOut,
+        hasTimeOut,
+        setHasTimedOut,
+        timeRun,
+        setTimeRun,
+    ]);
 
-  return <h3>{count > 0 ? "Time: " + count : "Time's up!"}</h3>;
-}
+    return (
+        <span className='info'>
+            {count > 0 ? 'Time: ' + count + ' ⏳' : "Time's up! ⌛"}
+        </span>
+    );
+};
 
 export default Timer;

@@ -1,0 +1,35 @@
+.input-field {
+    height: 2vmax;
+    width: 15vmax;
+    text-align: left;
+}
+
+.center-align {
+    text-align: center;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.form-align {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: left;
+    padding-top: 2vmax;
+}
+
+.form-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 4vmax;
+    font-size: 1vmax;
+}
+
+.select-field {
+    height: 2vmax;
+    width: 20vmax;
+    text-align: center;
+}
