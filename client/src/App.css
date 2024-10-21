@@ -18,7 +18,9 @@
 
 .content-container {
     background-color: rgba(172, 231, 255, 0.85);
-    padding: 2vmax;
+    padding-left: 2vmax;
+    padding-right: 2vmax;
+    padding-bottom: 2vmax;
     border-radius: 2vmax;
     /* margin-bottom: 20px;*/
     width: 80%;

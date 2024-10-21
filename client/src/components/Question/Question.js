@@ -148,11 +148,11 @@ const Question = () => {
     if (questionsSolved == numQuestions && strikes != 0) {
         return (
             <div>
-                <div className='links-bar'>
-                    <Link to='/HomeScreen'>Home screen</Link>
-                </div>
+                {/*<div className='links-bar'>
+                    <Link to='/'>Home screen</Link>
+                </div>*/}
                 <img
-                    src='/images/finish.png'
+                    src='../images/finish.png'
                     width='80%'
                     height='30%'
                     alt='Finish'
@@ -166,11 +166,11 @@ const Question = () => {
         if (strikes === 0) {
             return (
                 <div>
-                    <div className='links-bar'>
-                        <Link to='/HomeScreen'>Home screen</Link>
-                    </div>
+                    {/*<div className='links-bar'>
+                        <Link to='/'>Home screen</Link>
+                    </div>*/}
                     <img
-                        src='/images/gameOver1.png'
+                        src='../images/gameOver1.png'
                         width='70%'
                         height='25%'
                         alt='Game Over'
@@ -191,10 +191,10 @@ const Question = () => {
             /* <Timer onTimeOut={timeOut}/>  -> the timeout function is a prop  */
             return (
                 <div>
-                    <div className='links-bar'>
-                        <Link to='/HomeScreen'>Home screen</Link>
-                        <Link to='/'>Login screen</Link>
-                    </div>
+                    {/*<div className='links-bar'>
+                        <Link to='/Login/Login'>Login screen</Link>
+                        <Link to='/'>Home screen</Link>
+                    </div>*/}
                     <div className='infoBar'>
                         <span className='info'> Score: {score}</span>
                         <span className='info'>

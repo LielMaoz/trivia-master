@@ -1,0 +1,31 @@
+.home-align {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2vmax;
+}
+
+.buttons-align {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vmax;
+    padding-top: 3vmax;
+    cursor: pointer;
+}
+
+.image-button {
+    width: calc(
+        9vmax + 2rem
+    ); /* Set width to 30% of the maximum viewport dimension */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.img-message {
+    padding-top: 2vmax;
+    width: calc(
+        33vmax + 2rem
+    ); /* Set width to 30% of the maximum viewport dimension */
+    height: auto; /* Maintain the aspect ratio */
+}

@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import Question from '../Question';
 import './form.css';
 
 const Login = () => {
-    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
 
     if (isLoggedIn) {
-        navigate(`/HomeScreen`);
+        navigate(`/`);
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(name + ',' + password);
+        console.log(email + ',' + password);
         //change to something else to check if they are valid
-        if (name && password) {
+        if (email && password) {
             setIsLoggedIn(true); // Set login state to true
         } else {
-            alert('Please enter both username and password.');
+            alert('Please enter both email and password.');
         }
     };
 
@@ -31,12 +30,13 @@ const Login = () => {
             <form className='form-align' onSubmit={handleSubmit}>
                 <div className='form-input'>
                     <label>
-                        Enter your username:
+                        Enter your email:
+                        {/*<br></br>*/}
                         <input
-                            id='userName'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder='Enter username'
+                            id='userEmail'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder='Enter email'
                             className='input-field'
                         />
                     </label>
@@ -46,6 +46,7 @@ const Login = () => {
                 <div className='form-input'>
                     <label>
                         Enter your password:
+                        {/*<br></br>*/}
                         <input
                             id='password'
                             value={password}

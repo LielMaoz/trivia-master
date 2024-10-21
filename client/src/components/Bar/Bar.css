@@ -1,0 +1,33 @@
+#bar-container {
+    background-image: url('/public/images/barBackground1.png');
+    background-size: contain;
+    /*background-size: 100% auto;*/
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: flex-end;*/
+    align-items: center;
+    justify-content: space-between;
+    height: 3.2vmax;
+    padding-top: 3.5vmax;
+    padding-right: 2.5vmax;
+    padding-left: 2.5vmax;
+    padding-bottom: 2.5vmax;
+    font-size: calc(0.9vmax + 0.1rem); /*1vmax;*/
+
+    /*gap: 2vmax;*/
+}
+
+#logo img {
+    height: 115%;
+    width: auto; /* Keep the width auto so the aspect ratio is preserved */
+    object-fit: contain;
+}
+
+#logo {
+    padding-top: 0.5vmax;
+    height: 100%; /* Adjusts the logo height relative to the bar's height */
+    width: auto; /* Maintains aspect ratio by adjusting the width automatically */
+    cursor: pointer;
+}
