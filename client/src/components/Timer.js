@@ -9,6 +9,31 @@ import { useEffect } from 'react';
     setTimeRun - stop the timer, an answer was chosen   */
 
 const Timer = ({
+  count,
+  setCount,
+  onTimeOut,
+  hasTimeOut,
+  setHasTimedOut,
+  timeRun,
+  setTimeRun,
+}) => {
+  useEffect(() => {
+    if (timeRun) {
+      if (count > 0) {
+        const timer = setTimeout(() => {
+          setCount(count - 1); // Decrease the count by 1
+        }, 1000); //every one second
+
+        // Cleanup function to clear the timeout if component is unmounted
+        return () => clearTimeout(timer);
+      } // count == 0
+      else if (!hasTimeOut) {
+        setHasTimedOut(true); // Ensure this block only runs once
+        setTimeRun(false);
+        onTimeOut(); // Call the passed-in onTimeOut function
+      }
+    }
+  }, [
     count,
     setCount,
     onTimeOut,
@@ -16,38 +41,13 @@ const Timer = ({
     setHasTimedOut,
     timeRun,
     setTimeRun,
-}) => {
-    useEffect(() => {
-        if (timeRun) {
-            if (count > 0) {
-                const timer = setTimeout(() => {
-                    setCount(count - 1); // Decrease the count by 1
-                }, 1000); //every one second
+  ]);
 
-                // Cleanup function to clear the timeout if component is unmounted
-                return () => clearTimeout(timer);
-            } // count == 0
-            else if (!hasTimeOut) {
-                setHasTimedOut(true); // Ensure this block only runs once
-                setTimeRun(false);
-                onTimeOut(); // Call the passed-in onTimeOut function
-            }
-        }
-    }, [
-        count,
-        setCount,
-        onTimeOut,
-        hasTimeOut,
-        setHasTimedOut,
-        timeRun,
-        setTimeRun,
-    ]);
-
-    return (
-        <span className='info'>
-            {count > 0 ? 'Time: ' + count + ' ⏳' : "Time's up! ⌛"}
-        </span>
-    );
+  return (
+    <span className='info'>
+      {count > 0 ? 'Time: ' + count + ' ⏳' : "Time's up! ⌛"}
+    </span>
+  );
 };
 
 export default Timer;
