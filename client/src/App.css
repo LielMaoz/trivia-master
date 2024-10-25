@@ -14,11 +14,14 @@
     /*padding: 20px;*/
     /*min-width: 800;*/
     /*font-weight:bold;*/
+
 }
 
 .content-container {
     background-color: rgba(172, 231, 255, 0.85);
-    padding: 2vmax;
+    padding-left: 2vmax;
+    padding-right: 2vmax;
+    padding-bottom: 2vmax;
     border-radius: 2vmax;
     /* margin-bottom: 20px;*/
     width: 80%;
@@ -27,6 +30,7 @@
     min-height: fit-content;
     text-align: center;
 }
+
 
 button {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */

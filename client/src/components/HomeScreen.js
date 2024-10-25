@@ -2,88 +2,80 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
 import './Login/form.css';
+import './HomeScreen.css';
+import Bar from './Bar/Bar';
 
 const HomeScreen = () => {
-    console.log('HomeScreen component is rendering');
-    const navigate = useNavigate();
-    const [numQuestions, setNumQuestions] = useState(10);
-    const [category, setCategory] = useState({
-        value: '9',
-        label: 'General Knowledge',
-    });
-    const [difficulty, setDifficulty] = useState({
-        value: 'medium',
-        label: 'Medium',
-    });
+  const navigate = useNavigate();
 
-    const categoryOptions = [
-        { value: '9', label: 'General Knowledge' },
-        { value: '21', label: 'Sports' },
-        { value: '23', label: 'History' },
-        { value: '24', label: 'Politics' },
-    ];
+  const [customGameImageSrc, customGameSetImageSrc] = useState(
+    './images/custom.png'
+  );
+  const [quickGameImageSrc, quickGameSetImageSrc] =
+    useState('./images/quick.png');
+  const [privateGameImageSrc, privateGameSetImageSrc] = useState(
+    './images/private.png'
+  );
 
-    const difficultyOptions = [
-        { value: 'easy', label: 'Easy' },
-        { value: 'medium', label: 'Medium' },
-        { value: 'hard', label: 'Hard' },
-    ];
+  const handleCustomMouseDown = () => {
+    customGameSetImageSrc('./images/customClicked.png');
+  };
 
-    const handleCustomGame = () => {
-        // Navigate to the question board with query parameters
-        navigate(
-            `/Question/Question?numQuestions=${numQuestions}&category=${category.value}&difficulty=${difficulty.value}`
-        );
-    };
+  const handleCustomClick = () => {
+    /***check if the user is connected*/
+    navigate(`/Custom`);
+  };
 
-    return (
-        <div>
-            <h1>Welcome to the Trivia Game!</h1>
+  const handleQuickMouseDown = () => {
+    quickGameSetImageSrc('./images/quickClicked.png');
+  };
 
-            <h2>Custom Game</h2>
-            <div className='left-align'>
-                <label>
-                    Number of Questions:
-                    <input
-                        className='input-field'
-                        type='number'
-                        value={numQuestions}
-                        onChange={(e) => {
-                            const inputValue = Number(e.target.value);
-                            if (inputValue >= 5 && inputValue <= 500) {
-                                //allow values within the range
-                                setNumQuestions(inputValue);
-                            }
-                        }}
-                    />
-                </label>
-                <br></br>
-                <label>
-                    <br></br>
-                    Category:
-                    <Select
-                        className='select-field'
-                        options={categoryOptions}
-                        value={category}
-                        onChange={setCategory}
-                    />
-                </label>
-                <br></br>
-                <label>
-                    Difficulty:
-                    <Select
-                        className='select-field'
-                        options={difficultyOptions}
-                        value={difficulty}
-                        onChange={setDifficulty}
-                    />
-                </label>
-                <br></br>
-                <br></br>
-            </div>
-            <button onClick={handleCustomGame}>Start Custom Game</button>
-        </div>
+  const handleQuickClick = () => {
+    navigate(
+      `/Question/Question?numOfQuestions=${10}&category=${9}&difficulty=${'medium'}`
     );
+  };
+
+  const handlePrivateMouseDown = () => {
+    privateGameSetImageSrc('./images/privateClicked.png');
+  };
+
+  const handlePrivateClick = () => {
+    /***check if the user is connected*/
+    // navigate...
+  };
+
+  return (
+    <div>
+      {/*<Bar />*/}
+      <div className='home-align'>
+        <img className='img-message' src='./images/welcome.png' />
+        <img className='img-message' src='./images/chooseMessage.png' />
+
+        {/*<h1>Welcome to the Trivia Game!</h1>*/}
+        <div className='buttons-align'>
+          <img
+            className='image-button'
+            src={customGameImageSrc}
+            onMouseDown={handleCustomMouseDown}
+            onClick={handleCustomClick}
+          />
+          <img
+            className='image-button'
+            src={quickGameImageSrc}
+            onMouseDown={handleQuickMouseDown}
+            onClick={handleQuickClick}
+          />
+          <img
+            className='image-button'
+            src={privateGameImageSrc}
+            onMouseDown={handlePrivateMouseDown}
+            onClick={handlePrivateClick}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default HomeScreen;

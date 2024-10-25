@@ -1,43 +1,50 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './form.css';
+import './Login/form.css';
 import axios from 'axios';
 
-const Login = () => {
+const Signup = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSigned, setSigned] = useState(false);
   const navigate = useNavigate();
 
-  if (isLoggedIn) {
+  if (isSigned) {
+    {
+      /* set something to true */
+    }
     navigate(`/`);
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email + ',' + password);
     //change to something else to check if they are valid
-    if (!email || !password) {
-      alert('Please enter both email and password.');
+    if (!username || !password || !email) {
+      alert('Please fill all the boxes');
     } else {
       try {
-        const response = await axios.post('http://localhost:5000/api/login', {
-          email,
-          password,
-        });
+        const response = await axios.post(
+          'http://localhost:5000/api/register',
+          {
+            email,
+            username,
+            password,
+          }
+        );
         if (response.data.success) {
-          alert('User logged in successfully!');
-          setIsLoggedIn(true); // Set login state to true
+          alert('User registered successfully!');
+          setSigned(true); // Set signup state to true
         } else {
           alert(response.data.message);
         }
       } catch (error) {
-        if (error.response.status == 401) {
+        if (error.response && error.response.status == 400) {
           console.error('Error registering user:', error.response.data.message);
-          alert('Invalid email or password');
+          alert(error.response.data.message);
         } else {
           console.error('Error registering user:', error);
-          alert('An error occurred during login.');
+          alert('An error occurred during registration.');
         }
       }
     }
@@ -45,15 +52,28 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Login Page</h1>
+      <h1>Sign up Page</h1>
 
       <form className='form-align' onSubmit={handleSubmit}>
         <div className='form-input'>
           <label>
-            Enter your email:
-            {/*<br></br>*/}
+            Choose your username:
             <input
-              id='userEmail'
+              id='userName'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder='Enter username'
+              className='input-field'
+            />
+          </label>
+        </div>
+        <br></br>
+        <br></br>
+        <div className='form-input'>
+          <label>
+            Enter your email:
+            <input
+              id='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder='Enter email'
@@ -65,8 +85,7 @@ const Login = () => {
         <br></br>
         <div className='form-input'>
           <label>
-            Enter your password:
-            {/*<br></br>*/}
+            Choose your password:
             <input
               id='password'
               value={password}
@@ -80,11 +99,11 @@ const Login = () => {
         <br></br>
         <br></br>
         <div className='center-align'>
-          <button type='submit'>Login</button>
+          <button type='submit'>Sign up</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
