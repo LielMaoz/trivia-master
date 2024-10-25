@@ -14,6 +14,7 @@
     /*padding: 20px;*/
     /*min-width: 800;*/
     /*font-weight:bold;*/
+
 }
 
 .content-container {
@@ -29,6 +30,7 @@
     min-height: fit-content;
     text-align: center;
 }
+
 
 button {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
