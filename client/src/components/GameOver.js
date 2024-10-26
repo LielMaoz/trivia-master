@@ -4,7 +4,7 @@ const GameOver = ({ score, strikes, restartGame }) => {
   if (strikes != 0) {
     return (
       <div>
-        <img src='./images/finish.png' width='80%' height='30%' alt='Finish' />
+        <img src='../images/finish.png' width='80%' height='30%' alt='Finish' />
         <h2> Your score is: {score} 🏆</h2>
         <h3> Do you want to play again? </h3>
         <button onClick={() => restartGame()}>Yes!</button>
@@ -14,7 +14,7 @@ const GameOver = ({ score, strikes, restartGame }) => {
     return (
       <div>
         <img
-          src='./images/gameOver1.png'
+          src='../images/gameOver1.png'
           width='70%'
           height='25%'
           alt='Game Over'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import Timer from '../Timer';
@@ -7,8 +7,12 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Question.css';
 import he from 'he'; // Import the 'he' library
+import { GameContext } from '../../context/Context';
 
 const Question = () => {
+  const { gameOptions } = useContext(GameContext);
+  const { numOfQuestions, category, difficulty } = gameOptions;
+
   const seconds = 30;
 
   const [score, setScore] = useState(0);
@@ -23,19 +27,13 @@ const Question = () => {
   const [hasTimedOut, setHasTimedOut] = useState(false); // To prevent multiple timeouts
   const [timeRun, setTimeRun] = useState(true); // to prevent the time from running
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const numQuestions = searchParams.get('numQuestions');
-  const category = searchParams.get('category');
-  const difficulty = searchParams.get('difficulty');
-
   const [questionsSolved, setQuestionsSolved] = useState(0); //**solved = with a correct/wrong answer or a timeout
 
   // Move fetchQuestions outside the useEffect - in order to use it in the restart function
   const fetchQuestions = async () => {
     try {
       const response = await axios.get(
-        `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
+        `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
       );
 
       const fetchedQuestions = response.data.results.map((question) => {
@@ -67,7 +65,7 @@ const Question = () => {
 
   useEffect(() => {
     fetchQuestions();
-  }, [numQuestions, category, difficulty]);
+  }, [numOfQuestions, category, difficulty]);
 
   // **Shuffle function to randomize answer order**
   /*const shuffleAnswers = (answers) => {
@@ -145,7 +143,7 @@ const Question = () => {
   /*three situations - game over -the user won - no more questions and there is more then 1 strike
                        - game over - the user lost - no more strikes
                        - there are more questions and strikes - show a button to mave to the next one */
-  if (questionsSolved == numQuestions || strikes === 0) {
+  if (questionsSolved == numOfQuestions || strikes === 0) {
     return (
       <GameOver score={score} strikes={strikes} restartGame={restartGame} />
     );

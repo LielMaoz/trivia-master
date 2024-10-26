@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './form.css';
 import axios from 'axios';
+import { LoginContext } from '../../context/Context';
 
 const Login = () => {
+  const { userLoggedIn, setUserLoggedIn } = useContext(LoginContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
 
-  if (isLoggedIn) {
-    navigate(`/`);
-  }
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email + ',' + password);
     //change to something else to check if they are valid
     if (!email || !password) {
       alert('Please enter both email and password.');
@@ -27,7 +25,9 @@ const Login = () => {
         });
         if (response.data.success) {
           alert('User logged in successfully!');
-          setIsLoggedIn(true); // Set login state to true
+          setUserLoggedIn(email);
+          console.log(userLoggedIn);
+          navigate(`/`);
         } else {
           alert(response.data.message);
         }

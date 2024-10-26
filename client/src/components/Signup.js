@@ -1,21 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login/form.css';
 import axios from 'axios';
+import { LoginContext } from '../context/Context';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSigned, setSigned] = useState(false);
   const navigate = useNavigate();
 
-  if (isSigned) {
-    {
-      /* set something to true */
-    }
-    navigate(`/`);
-  }
+  const { userLoggedIn, setUserLoggedIn } = useContext(LoginContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +29,9 @@ const Signup = () => {
         );
         if (response.data.success) {
           alert('User registered successfully!');
-          setSigned(true); // Set signup state to true
+          setUserLoggedIn(email);
+          console.log(userLoggedIn);
+          navigate(`/`);
         } else {
           alert(response.data.message);
         }

@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Select from 'react-select';
 import { useNavigate } from 'react-router-dom';
 import './Login/form.css';
+import { GameContext } from '../context/Context';
 
 const Custom = () => {
   console.log('custom component is rendering');
   const navigate = useNavigate();
-  const [numOfQuestions, setnumOfQuestions] = useState(10);
-  const [category, setCategory] = useState({
-    value: '9',
-    label: 'General Knowledge',
-  });
-  const [difficulty, setDifficulty] = useState({
-    value: 'medium',
-    label: 'Medium',
-  });
+
+  const { gameOptions, setGameOptions } = useContext(GameContext);
+  const { numOfQuestions, category, difficulty } = gameOptions;
 
   const categoryOptions = [
     { value: '9', label: 'General Knowledge' },
@@ -31,9 +26,7 @@ const Custom = () => {
 
   const handleCustomGame = () => {
     // Navigate to the question board with query parameters
-    navigate(
-      `/Question/Question?numOfQuestions=${numOfQuestions}&category=${category.value}&difficulty=${difficulty.value}`
-    );
+    navigate(`/Question/Question`);
   };
 
   return (
@@ -52,7 +45,10 @@ const Custom = () => {
               const inputValue = Number(e.target.value);
               if (inputValue >= 5 && inputValue <= 500) {
                 //allow values within the range
-                setnumOfQuestions(inputValue);
+                setGameOptions((prevOptions) => ({
+                  ...prevOptions,
+                  numOfQuestions: inputValue,
+                }));
               }
             }}
           />
@@ -64,8 +60,13 @@ const Custom = () => {
           <Select
             className='select-field'
             options={categoryOptions}
-            value={category}
-            onChange={setCategory}
+            value={categoryOptions.find((option) => option.value === category)}
+            onChange={(SelectedOption) =>
+              setGameOptions((prevOptions) => ({
+                ...prevOptions,
+                category: SelectedOption.value,
+              }))
+            }
           />
         </label>
         <br></br>
@@ -74,8 +75,15 @@ const Custom = () => {
           <Select
             className='select-field'
             options={difficultyOptions}
-            value={difficulty}
-            onChange={setDifficulty}
+            value={difficultyOptions.find(
+              (option) => option.value === difficulty
+            )}
+            onChange={(SelectedOption) =>
+              setGameOptions((prevOptions) => ({
+                ...prevOptions,
+                difficulty: SelectedOption.value,
+              }))
+            }
           />
         </label>
         <br></br>
