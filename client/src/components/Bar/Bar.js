@@ -3,23 +3,28 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Bar = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const handleLogoClick = () => {
-    navigate(`/`);
-  };
+    const handleLogoClick = () => {
+        navigate(`/`);
+    };
 
-  return (
-    <div id='bar-container'>
-      <div id='logo'>
-        <img src='./images/triviaMasterHeader3.png' onClick={handleLogoClick} />
-      </div>
-      {/****add more logic here... with disconnect option...*/}
-
-      <Link to='/Login/Login'>Login </Link>
-      <Link to='/Signup'>Sign up</Link>
-    </div>
-  );
+    return (
+        <div id='bar-container'>
+            <div id='logo'>
+                <img src='/images/logo.png' onClick={handleLogoClick} />
+            </div>
+            {/****add more logic here... with disconnect option...*/}
+            <div className='links-container'>
+                <Link to='/Login/Login' className='link'>
+                    Login{' '}
+                </Link>
+                <Link to='/Signup' className='link'>
+                    Sign up
+                </Link>
+            </div>
+        </div>
+    );
 };
 
 export default Bar;

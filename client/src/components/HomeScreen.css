@@ -24,6 +24,7 @@
 
 .img-message {
     padding-top: 2vmax;
+    align-self: center;
     width: calc(
         33vmax + 2rem
     ); /* Set width to 30% of the maximum viewport dimension */
