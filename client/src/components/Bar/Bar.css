@@ -77,3 +77,17 @@
 /*.link:visited {
     color: #30646d;
 }*/
+
+#username {
+    background-color: rgba(20, 0, 74, 1);
+    width: fit-content;
+    height: 3vmax;
+    padding-left: 1vmax;
+    padding-right: 1vmax;
+    border-radius: 2vmax;
+    color: aliceblue;
+    font-size: calc(1.1vmax + 0.2rem); /*1.3vmax;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
