@@ -1,6 +1,34 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { LoginContext } from '../context/Context';
+import axios from 'axios';
 
 const GameOver = ({ score, strikes, restartGame }) => {
+  const { userLoggedIn } = useContext(LoginContext);
+
+  const handleScore = async () => {
+    if (userLoggedIn) {
+      try {
+        const response = await axios.post('http://localhost:5000/api/score', {
+          email: userLoggedIn,
+          score,
+        });
+        if (response.data.success) {
+          console.log('handle score for user: ', userLoggedIn);
+          alert(response.data.message);
+        } else {
+          alert(response.data.message);
+        }
+      } catch (error) {
+        console.error('Error registering user:', error);
+        alert('An error occurred during registration.');
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleScore();
+  }, []);
+
   if (strikes != 0) {
     return (
       <div>

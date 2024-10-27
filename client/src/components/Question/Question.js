@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import Timer from '../Timer';
 import GameOver from '../GameOver';
-import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Question.css';
 import he from 'he'; // Import the 'he' library

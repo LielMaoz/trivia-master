@@ -65,6 +65,39 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal server error.' });
   }
 });
+
+app.post('/api/score', async (req, res) => {
+  try {
+    const { email, score } = req.body;
+    const userFromDb = await User.findOne({ email });
+
+    if (!userFromDb) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found',
+      });
+    }
+
+    if (userFromDb.score < score) {
+      userFromDb.score = score;
+      await userFromDb.save();
+      return res.status(200).json({
+        success: true,
+        message: 'User highest score updated successfully!',
+      });
+    } else {
+      return res.status(200).json({
+        success: true,
+        message:
+          'Score is not higher than current highest score, no update made.',
+      });
+    }
+  } catch (err) {
+    console.error('Error updating score: ', err);
+    res.status(500).json({ success: false, message: 'Internal server error.' });
+  }
+});
+
 // Start the server
 httpServer.listen(5000, () => {
   console.log('Server is running on http://localhost:5000');

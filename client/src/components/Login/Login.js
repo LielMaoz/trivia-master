@@ -26,7 +26,6 @@ const Login = () => {
         if (response.data.success) {
           alert('User logged in successfully!');
           setUserLoggedIn(email);
-          console.log(userLoggedIn);
           navigate(`/`);
         } else {
           alert(response.data.message);
