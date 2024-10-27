@@ -10,11 +10,36 @@
     padding-top: 2.5vmax;
 }
 
-.links-bar {
-    background-color: rgb(165, 219, 245, 0.85);
+.questionWrapper {
+    min-height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
-    font-size: calc(0.9vmax + 0.1rem); /*1vmax;*/
-    gap: 2vmax;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.answersWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 33vmax;
+    gap: 0.5vmax;
+}
+
+.answerbutton {
+    color: #011730;
+    background-color: rgba(87, 183, 221, 0.85); /* rgba(100, 183, 216, 0.85);*/
+    width: 15vmax;
+    height: 5vmax;
+    border-radius: 2vmax;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.answerbutton:hover {
+    /* color: #d4dbeb;*/
+    background-color: rgba(119, 193, 223, 0.85);
 }

@@ -1,6 +1,16 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scroll bars */
+}
+
 #background-div {
     height: 100vh; /* Full height of the viewport */
     background-image: url('/public/images/background3.png'); /* Path to your image */
+    background-size: cover;
     object-fit: fill;
     color: rgb(11, 35, 71); /* Text color on top of the background */
     display: flex; /* Use flexbox to center content */
@@ -14,13 +24,13 @@
     /*padding: 20px;*/
     /*min-width: 800;*/
     /*font-weight:bold;*/
-
 }
 
 .content-container {
-    background-color: rgba(172, 231, 255, 0.85);
-    padding-left: 2vmax;
-    padding-right: 2vmax;
+    background-color: rgba(130, 205, 235, 0.85);
+    /* background-color: rgba(113, 203, 238, 0.85);*/
+    /*padding-left: 2vmax;
+    padding-right: 2vmax;*/
     padding-bottom: 2vmax;
     border-radius: 2vmax;
     /* margin-bottom: 20px;*/
@@ -28,12 +38,14 @@
     max-width: calc(38vmax + 2rem);
     height: calc(38.5vmax + 2rem);
     min-height: fit-content;
+    align-items: center;
     text-align: center;
+    gap: 2vmax;
 }
-
 
 button {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 2vmax;
     color: white; /*white text */
     border: 2px solid #0c2a33;
     padding: 10px 20px;

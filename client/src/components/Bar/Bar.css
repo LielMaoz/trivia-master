@@ -1,33 +1,95 @@
 #bar-container {
-    background-image: url('/public/images/barBackground1.png');
+    /*background-image: url('/public/images/barBackground1.png');
     background-size: contain;
-    /*background-size: 100% auto;*/
+    //background-size: 100% auto;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center;*/
+
+    background-color: rgb(13, 132, 211); /* rgba(172, 231, 255, 0.85);*/
+    /*background-color: rgb(20, 58, 87);*/
+    /*border: 2px solid #031c22;*/
+    border-radius: 2vmax;
+    /* margin-bottom: 20px;*/
+    /* width: 90%;*/
+
     display: flex;
     flex-wrap: wrap;
     /*justify-content: flex-end;*/
     align-items: center;
     justify-content: space-between;
-    height: 3.2vmax;
-    padding-top: 3.5vmax;
-    padding-right: 2.5vmax;
-    padding-left: 2.5vmax;
-    padding-bottom: 2.5vmax;
+    height: 3.5vmax;
+    padding-top: 0.5vmax;
+    padding-right: 1.5vmax;
+    padding-left: 1.5vmax;
+    padding-bottom: 0.5vmax;
     font-size: calc(0.9vmax + 0.1rem); /*1vmax;*/
-
+    margin-bottom: 4vmax;
     /*gap: 2vmax;*/
 }
 
 #logo img {
-    height: 115%;
+    height: 3.5vmax;
     width: auto; /* Keep the width auto so the aspect ratio is preserved */
     object-fit: contain;
+    cursor: pointer;
 }
 
-#logo {
-    padding-top: 0.5vmax;
-    height: 100%; /* Adjusts the logo height relative to the bar's height */
-    width: auto; /* Maintains aspect ratio by adjusting the width automatically */
-    cursor: pointer;
+#logo:hover {
+    transform: scale(1.1);
+}
+
+.links-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vmax;
+    align-items: center;
+}
+
+.link {
+    /*color: #084f9b;
+    background-color: rgba(109, 200, 236, 0.85);*/
+    color: #fcfdff;
+    /*background-color: rgba(33, 150, 243, 1);*/
+    background-color: rgba(65, 173, 216, 0.85); /*rgba(20, 0, 74, 1);*/
+    border: none;
+    width: 8vmax;
+    height: 3vmax;
+    border-radius: 2vmax;
+    text-decoration: none;
+    /*font-weight: bold;*/
+    font-size: calc(0.8vmax + 0.2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link:hover {
+    /*color: #418ad8; 
+    background-color: rgba(131, 215, 248, 0.85);*/
+    color: #d4dbeb;
+    /* background-color: rgb(59, 161, 245);*/
+    background-color: rgba(93, 179, 212, 0.85); /*rgb(33, 3, 117);*/
+
+    text-decoration: underline;
+    transform: scale(1.1);
+    /*text-decoration-style: wavy;*/
+}
+
+/*.link:visited {
+    color: #30646d;
+}*/
+
+#username {
+    background-color: rgba(20, 0, 74, 1);
+    width: fit-content;
+    height: 3vmax;
+    padding-left: 1vmax;
+    padding-right: 1vmax;
+    border-radius: 2vmax;
+    color: aliceblue;
+    font-size: calc(0.8vmax + 0.2rem);
+    /*font-weight: bold;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
