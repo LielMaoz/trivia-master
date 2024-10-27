@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-position: center;*/
 
-    background-color: rgba(172, 231, 255, 0.85);
+    background-color: rgb(13, 132, 211); /* rgba(172, 231, 255, 0.85);*/
     /*background-color: rgb(20, 58, 87);*/
     /*border: 2px solid #031c22;*/
     border-radius: 2vmax;
@@ -50,13 +50,14 @@
     background-color: rgba(109, 200, 236, 0.85);*/
     color: #fcfdff;
     /*background-color: rgba(33, 150, 243, 1);*/
-    background-color: rgba(20, 0, 74, 1);
+    background-color: rgba(65, 173, 216, 0.85); /*rgba(20, 0, 74, 1);*/
+    border: none;
     width: 8vmax;
     height: 3vmax;
     border-radius: 2vmax;
     text-decoration: none;
-    font-weight: bold;
-
+    /*font-weight: bold;*/
+    font-size: calc(0.8vmax + 0.2rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,7 +68,7 @@
     background-color: rgba(131, 215, 248, 0.85);*/
     color: #d4dbeb;
     /* background-color: rgb(59, 161, 245);*/
-    background-color: rgb(33, 3, 117);
+    background-color: rgba(93, 179, 212, 0.85); /*rgb(33, 3, 117);*/
 
     text-decoration: underline;
     transform: scale(1.1);
@@ -86,7 +87,8 @@
     padding-right: 1vmax;
     border-radius: 2vmax;
     color: aliceblue;
-    font-size: calc(1.1vmax + 0.2rem); /*1.3vmax;*/
+    font-size: calc(0.8vmax + 0.2rem);
+    /*font-weight: bold;*/
     display: flex;
     align-items: center;
     justify-content: center;
