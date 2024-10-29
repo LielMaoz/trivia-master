@@ -9,11 +9,11 @@ const GameOver = ({ score, strikes, restartGame }) => {
     if (userLoggedIn) {
       try {
         const response = await axios.post('http://localhost:5000/api/score', {
-          email: userLoggedIn,
+          email: userLoggedIn.email,
           score,
         });
         if (response.data.success) {
-          console.log('handle score for user: ', userLoggedIn);
+          console.log('handle score for user: ', userLoggedIn.email);
           alert(response.data.message);
         } else {
           alert(response.data.message);
