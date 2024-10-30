@@ -27,7 +27,7 @@ body {
 }
 
 .content-container {
-    background-color: rgba(130, 205, 235, 0.85);
+    background-color: rgba(130, 205, 235, 0.95);
     /* background-color: rgba(113, 203, 238, 0.85);*/
     /*padding-left: 2vmax;
     padding-right: 2vmax;*/
@@ -47,7 +47,7 @@ button {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     border-radius: 2vmax;
     color: white; /*white text */
-    border: 2px solid #0c2a33;
-    padding: 10px 20px;
+    border: 0.25vmax solid #0c2a33;
+    padding: calc(0.9vmax + 0.2rem) calc(1.8vmax + 0.4rem);
     cursor: pointer;
 }

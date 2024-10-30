@@ -1,0 +1,21 @@
+.popup-overlay {
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1; /* Ensure it’s on top */
+}
+
+.popup-content {
+    position: absolute; /* Allow custom positioning */
+    top: 20%; /* Change this value to position it vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, 0); /* Adjust position horizontally */
+    background-color: rgb(198, 230, 235);
+    padding: 2rem;
+    border-radius: 2vmax;
+    text-align: center;
+    z-index: 1.1; /* Ensure it’s above the overlay */
+}
