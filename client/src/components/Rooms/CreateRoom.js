@@ -1,17 +1,25 @@
 import '../HomeScreen.css';
 import '../Login/form.css';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CreateRoom = () => {
     const [groupName, setGroupName] = useState('');
-
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
     };
 
+    const returnSelectionPage = () => {
+        navigate('/Rooms/RoomSelection');
+    };
+
     return (
-        <div className='wrapper'>
-            <div className='buttons-align'>
+        <div>
+            <div className='right-align'>
+                <button onClick={returnSelectionPage}> ➢{/*🠮 */}</button>
+            </div>
+            <div className='wrapper'>
                 <form onSubmit={handleSubmit}>
                     <div className='input-field'>
                         <input

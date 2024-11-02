@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PopUp from './PopUp';
 import './HomeScreen.css';
@@ -10,6 +10,8 @@ const HomeScreen = () => {
     const { userLoggedIn } = useContext(LoginContext);
     const [showPopup, setShowPopup] = useState(false);
     const navigate = useNavigate();
+
+    /*let menuAudio = new Audio('./sounds/menu-music2.mp3');*/
 
     const [customGameImageSrc, customGameSetImageSrc] = useState(
         './images/custom.png'
@@ -66,6 +68,28 @@ const HomeScreen = () => {
     const closePopup = () => {
         setShowPopup(false); // Function to close the popup
     };
+
+    /* useEffect(() => {
+        const playAudio = async () => {
+            try {
+                if (menuAudio.paused) {
+                    // Check if audio is not playing
+                    await menuAudio.play();
+                }
+            } catch (error) {
+                console.log('Error playing audio:', error);
+            }
+        };
+
+        menuAudio.volume = 0.2;
+        menuAudio.loop = true;
+        playAudio();
+
+        return () => {
+            menuAudio.pause();
+            menuAudio.currentTime = 0; // Reset the audio position
+        };
+    }, []);*/
 
     return (
         <div className='home-align'>

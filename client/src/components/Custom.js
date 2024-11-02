@@ -13,6 +13,10 @@ const Custom = () => {
 
     const categoryOptions = [
         { value: '9', label: 'General Knowledge' },
+        /*{ value: '16', label: 'Board Games' },*/
+        { value: '17', label: 'Science & Nature' },
+        { value: '18', label: 'Science: Computers' },
+        /*{ value: '19', label: 'Science: Mathematics' },*/
         { value: '21', label: 'Sports' },
         { value: '23', label: 'History' },
         { value: '24', label: 'Politics' },

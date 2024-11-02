@@ -33,7 +33,7 @@ const Login = () => {
                         email: email,
                         username: response.data.username,
                     });
-                    alert('User logged in successfully!');
+                    /*alert('User logged in successfully!');*/
                     navigate(`/`);
                 } else {
                     alert(response.data.message);

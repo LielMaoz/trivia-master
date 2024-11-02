@@ -1,7 +1,8 @@
 .wrapper {
     width: 80%;
     max-width: calc(38vmax + 2rem);
-    height: calc(27vmax + 2rem);
+    height: calc(24vmax + 2rem);
+    min-height: fit-content;
     border-radius: 2vmax;
     padding: 2vmax;
     text-align: center;
@@ -64,4 +65,9 @@ form {
 
 .left-align {
     text-align: left;
+}
+
+.right-align {
+    text-align: right;
+    padding-right: 1vmax;
 }

@@ -34,6 +34,7 @@ const App = () => {
                     <div id='background-div'>
                         <div className='content-container'>
                             <Bar />
+
                             <Routes>
                                 <Route path='/' element={<HomeScreen />} />
                                 <Route

@@ -66,18 +66,11 @@ const Question = () => {
         fetchQuestions();
     }, [numOfQuestions, category, difficulty]);
 
-    // **Shuffle function to randomize answer order**
-    /*const shuffleAnswers = (answers) => {
-        return answers.sort(() => Math.random() - 0.5);
-    };*/
     const shuffleAnswers = (answers) => {
         for (let i = answers.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             // Swap elements at index i and j
             [answers[i], answers[j]] = [answers[j], answers[i]];
-            /* let temp = answers[i];
-            answers[i] = answers[j];
-            answers[j] = temp;*/
         }
         return answers;
     };
@@ -173,36 +166,51 @@ const Question = () => {
                     />
                 </div>
 
-                <h2>Question {currentQuestionIndex + 1}:</h2>
-                <h3>{questions[currentQuestionIndex].question}</h3>
-                <div className='answersWrapper'>
-                    {questions[currentQuestionIndex].options.map(
-                        (answer, index) => (
-                            <button
-                                className='answerbutton'
-                                key={index}
-                                onClick={() => handleAnswerClick(answer)}
-                            >
-                                {answer}
-                            </button>
-                        )
-                    )}
-                </div>
-                <div>
-                    {isAnswerCorrect === true && <p>Correct! 🎉</p>}
-                    {isAnswerCorrect === false &&
-                        (hasTimedOut ? (
-                            <p> Time's up! 🐢</p>
-                        ) : (
-                            <p>
-                                Wrong! 😢 <br></br> The correct answer is{' '}
-                                {questions[currentQuestionIndex].correct_answer}
-                            </p>
-                        ))}
-                    {nextQVis === true && (
-                        <button onClick={nextQuestion}>Next Question</button>
-                    )}
-                </div>
+                {/* Check if questions array is populated and currentQuestionIndex is valid */}
+                {questions.length > 0 && questions[currentQuestionIndex] ? (
+                    <>
+                        <h2>Question {currentQuestionIndex + 1}:</h2>
+                        <h3>{questions[currentQuestionIndex].question}</h3>
+                        <div className='answersWrapper'>
+                            {questions[currentQuestionIndex].options.map(
+                                (answer, index) => (
+                                    <button
+                                        className='answerbutton'
+                                        key={index}
+                                        onClick={() =>
+                                            handleAnswerClick(answer)
+                                        }
+                                    >
+                                        {answer}
+                                    </button>
+                                )
+                            )}
+                        </div>
+                        <div>
+                            {isAnswerCorrect === true && <p>Correct! 🎉</p>}
+                            {isAnswerCorrect === false &&
+                                (hasTimedOut ? (
+                                    <p> Time's up! 🐢</p>
+                                ) : (
+                                    <p>
+                                        Wrong! 😢 <br></br> The correct answer
+                                        is{' '}
+                                        {
+                                            questions[currentQuestionIndex]
+                                                .correct_answer
+                                        }
+                                    </p>
+                                ))}
+                            {nextQVis === true && (
+                                <button onClick={nextQuestion}>
+                                    Next Question
+                                </button>
+                            )}
+                        </div>
+                    </>
+                ) : (
+                    <div>Loading question...</div> // until questions are loaded
+                )}
             </div>
         );
     }
