@@ -2,11 +2,12 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './form.css';
 import axios from 'axios';
-import { LoginContext } from '../../context/Context';
+import { LoginContext /*UserNameContext*/ } from '../../context/Context';
 
 const Login = () => {
     const { setUserLoggedIn } = useContext(LoginContext);
 
+    // const { username, setUsername } = useContext(UserNameContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -29,10 +30,14 @@ const Login = () => {
                 console.log(response.data); // Log the entire response for debugging
 
                 if (response.data.success) {
+                    //setUsername(response.data.username);
                     setUserLoggedIn({
                         email: email,
                         username: response.data.username,
                     });
+                    //setUsername(response.data.username);
+                    //console.log(response.data.username);
+                    //console.log(userLoggedIn.username);
                     /*alert('User logged in successfully!');*/
                     navigate(`/`);
                 } else {
