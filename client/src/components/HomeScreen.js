@@ -1,100 +1,140 @@
-import React, { useState, useContext } from 'react';
-
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login/form.css';
+import PopUp from './PopUp';
 import './HomeScreen.css';
-import Bar from './Bar/Bar';
 
 import { GameContext, LoginContext } from '../context/Context';
 
 const HomeScreen = () => {
-  const { setGameOptions } = useContext(GameContext);
-  const { userLoggedIn } = useContext(LoginContext);
+    const { setGameOptions } = useContext(GameContext);
+    const { userLoggedIn } = useContext(LoginContext);
+    const [showPopup, setShowPopup] = useState(false);
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    /*let menuAudio = new Audio('./sounds/menu-music2.mp3');*/
 
-  const [customGameImageSrc, customGameSetImageSrc] = useState(
-    './images/custom.png'
-  );
-  const [quickGameImageSrc, quickGameSetImageSrc] =
-    useState('./images/quick.png');
-  const [privateGameImageSrc, privateGameSetImageSrc] = useState(
-    './images/private.png'
-  );
+    const [customGameImageSrc, customGameSetImageSrc] = useState(
+        './images/custom.png'
+    );
+    const [quickGameImageSrc, quickGameSetImageSrc] =
+        useState('./images/quick.png');
+    const [privateGameImageSrc, privateGameSetImageSrc] = useState(
+        './images/private.png'
+    );
 
-  const handleCustomMouseDown = () => {
-    customGameSetImageSrc('./images/customClicked.png');
-  };
+    const handleCustomMouseDown = () => {
+        customGameSetImageSrc('./images/customClicked.png');
+    };
 
-  const handleCustomClick = () => {
-    /***check if the user is connected*/
-    setGameOptions({
-      numOfQuestions: 10,
-      category: '9',
-      difficulty: 'medium',
-    });
-    navigate(`/Custom`);
-  };
+    const handleCustomClick = () => {
+        /***check if the user is connected*/
+        setGameOptions({
+            numOfQuestions: 10,
+            category: '9',
+            difficulty: 'medium',
+        });
+        navigate(`/Custom`);
+    };
 
-  const handleQuickMouseDown = () => {
-    console.log(userLoggedIn);
-    quickGameSetImageSrc('./images/quickClicked.png');
-  };
+    const handleQuickMouseDown = () => {
+        console.log(userLoggedIn);
+        quickGameSetImageSrc('./images/quickClicked.png');
+    };
 
-  const handleQuickClick = () => {
-    setGameOptions({
-      numOfQuestions: 10,
-      category: '9',
-      difficulty: 'medium',
-    });
-    navigate('/Question/Question');
-  };
+    const handleQuickClick = () => {
+        setGameOptions({
+            numOfQuestions: 10,
+            category: '9',
+            difficulty: 'medium',
+        });
+        navigate('/Question/Question');
+    };
 
-  const handlePrivateMouseDown = () => {
-    privateGameSetImageSrc('./images/privateClicked.png');
-  };
+    const handlePrivateMouseDown = () => {
+        privateGameSetImageSrc('./images/privateClicked.png');
+    };
 
-  const handlePrivateClick = () => {
-    /***check if the user is connected*/
-    // navigate...
-  };
+    const handlePrivateClick = () => {
+        if (userLoggedIn)
+            /***check if the user is connected*/
+            navigate('/Rooms/RoomSelection');
+        else {
+            setShowPopup(true);
+            /*alert('Log in to access exciting private games with your friends!');*/
+            privateGameSetImageSrc('./images/private.png');
+        }
+    };
 
-  return (
-    <div>
-      <div className='home-align'>
-        {userLoggedIn && (
-          <div>
-            {' '}
-            <span id='img-message'> Hi {userLoggedIn.username} 👋</span>
-          </div>
-        )}
+    const closePopup = () => {
+        setShowPopup(false); // Function to close the popup
+    };
 
-        <img className='img-message' src='./images/welcome.png' />
-        <img className='img-message' src='./images/chooseMessage.png' />
+    /* useEffect(() => {
+        const playAudio = async () => {
+            try {
+                if (menuAudio.paused) {
+                    // Check if audio is not playing
+                    await menuAudio.play();
+                }
+            } catch (error) {
+                console.log('Error playing audio:', error);
+            }
+        };
 
-        <div className='buttons-align'>
-          <img
-            className='image-button'
-            src={customGameImageSrc}
-            onMouseDown={handleCustomMouseDown}
-            onClick={handleCustomClick}
-          />
-          <img
-            className='image-button'
-            src={quickGameImageSrc}
-            onMouseDown={handleQuickMouseDown}
-            onClick={handleQuickClick}
-          />
-          <img
-            className='image-button'
-            src={privateGameImageSrc}
-            onMouseDown={handlePrivateMouseDown}
-            onClick={handlePrivateClick}
-          />
+        menuAudio.volume = 0.2;
+        menuAudio.loop = true;
+        playAudio();
+
+        return () => {
+            menuAudio.pause();
+            menuAudio.currentTime = 0; // Reset the audio position
+        };
+    }, []);*/
+
+    return (
+        <div className='home-align'>
+            {userLoggedIn && (
+                <div>
+                    {' '}
+                    <span className='text-message'>
+                        {' '}
+                        Hi {userLoggedIn.username} 👋
+                    </span>
+                </div>
+            )}
+
+            <img className='img-message' src='./images/welcome.png' />
+            <img className='img-message' src='./images/chooseMessage.png' />
+            <div>
+                {showPopup && (
+                    <PopUp
+                        text='Log in to access exciting private games with your friends!'
+                        onClose={closePopup}
+                    />
+                )}
+            </div>
+            <div className='buttons-align'>
+                <img
+                    className='image-button'
+                    src={customGameImageSrc}
+                    onMouseDown={handleCustomMouseDown}
+                    onClick={handleCustomClick}
+                />
+                <img
+                    className='image-button'
+                    src={quickGameImageSrc}
+                    onMouseDown={handleQuickMouseDown}
+                    onClick={handleQuickClick}
+                />
+                <img
+                    className='image-button'
+                    src={privateGameImageSrc}
+                    onMouseDown={handlePrivateMouseDown}
+                    onClick={handlePrivateClick}
+                />
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default HomeScreen;
