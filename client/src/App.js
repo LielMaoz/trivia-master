@@ -21,11 +21,7 @@ const App = () => {
         difficulty: 'medium',
     });
 
-    /*const [userLoggedIn, setUserLoggedIn] = useState({
-        username: '',
-        email: '',
-    });*/
-    const [userLoggedIn, setUserLoggedIn] = useState(null);
+    const [userLoggedIn, setUserLoggedIn] = useState();
 
     return (
         <LoginContext.Provider value={{ userLoggedIn, setUserLoggedIn }}>
@@ -34,7 +30,6 @@ const App = () => {
                     <div id='background-div'>
                         <div className='content-container'>
                             <Bar />
-
                             <Routes>
                                 <Route path='/' element={<HomeScreen />} />
                                 <Route
@@ -42,7 +37,6 @@ const App = () => {
                                     element={<Login />}
                                 />
                                 <Route path='/Signup' element={<Signup />} />
-
                                 <Route
                                     path='/Leaderboard/Leaderboard'
                                     element={<Leaderboard />}
@@ -52,18 +46,6 @@ const App = () => {
                                     element={<Question />}
                                 />
                                 <Route path='/Custom' element={<Custom />} />
-                                <Route
-                                    path='/Rooms/RoomSelection'
-                                    element={<RoomSelection />}
-                                />
-                                <Route
-                                    path='/Rooms/JoinRoom'
-                                    element={<JoinRoom />}
-                                />
-                                <Route
-                                    path='/Rooms/CreateRoom'
-                                    element={<CreateRoom />}
-                                />
                             </Routes>
                         </div>
                     </div>
