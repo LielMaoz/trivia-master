@@ -18,25 +18,25 @@ const App = () => {
     difficulty: 'medium',
   });
 
-  const [userLoggedIn, setUserLoggedIn] = useState({ username: '', email: '' });
+  const [userLoggedIn, setUserLoggedIn] = useState();
 
   return (
     <LoginContext.Provider value={{ userLoggedIn, setUserLoggedIn }}>
       <GameContext.Provider value={{ gameOptions, setGameOptions }}>
         <BrowserRouter>
-          <div id='background-div'>
-            <div className='content-container'>
+          <div id="background-div">
+            <div className="content-container">
               <Bar />
               <Routes>
-                <Route path='/' element={<HomeScreen />} />
-                <Route path='/Login/Login' element={<Login />} />
-                <Route path='/Signup' element={<Signup />} />
+                <Route path="/" element={<HomeScreen />} />
+                <Route path="/Login/Login" element={<Login />} />
+                <Route path="/Signup" element={<Signup />} />
                 <Route
-                  path='/Leaderboard/Leaderboard'
+                  path="/Leaderboard/Leaderboard"
                   element={<Leaderboard />}
                 />
-                <Route path='/Question/Question' element={<Question />} />
-                <Route path='/Custom' element={<Custom />} />
+                <Route path="/Question/Question" element={<Question />} />
+                <Route path="/Custom" element={<Custom />} />
               </Routes>
             </div>
           </div>
